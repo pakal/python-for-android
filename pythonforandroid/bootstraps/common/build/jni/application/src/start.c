@@ -397,7 +397,7 @@ JNIEXPORT void JNICALL Java_org_kivy_android_PythonService_nativeStart(
   setenv("ANDROID_ARGUMENT", android_argument, 1);
   setenv("ANDROID_APP_PATH", android_argument, 1);
   setenv("ANDROID_ENTRYPOINT", service_entrypoint, 1);
-  setenv("PYTHONOPTIMIZE", "2", 1);
+  //setenv("PYTHONOPTIMIZE", "2", 1);
   setenv("PYTHON_NAME", python_name, 1);
   setenv("PYTHONHOME", python_home, 1);
   setenv("PYTHONPATH", python_path, 1);

@@ -185,7 +185,7 @@ public class PythonActivity extends SDLActivity {
             SDLActivity.nativeSetenv("ANDROID_UNPACK", app_root_dir);
             SDLActivity.nativeSetenv("PYTHONHOME", app_root_dir);
             SDLActivity.nativeSetenv("PYTHONPATH", app_root_dir + ":" + app_root_dir + "/lib");
-            SDLActivity.nativeSetenv("PYTHONOPTIMIZE", "2");
+            //SDLActivity.nativeSetenv("PYTHONOPTIMIZE", "2");
 
             try {
                 Log.v(TAG, "Access to our meta-data...");
