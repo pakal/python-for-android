@@ -379,6 +379,9 @@ public class SDLActivity extends Activity implements View.OnSystemUiVisibilityCh
     protected void onDestroy() {
         Log.v(TAG, "onDestroy()");
 
+        Log.v(TAG, "force-killing self process to avoid zombie state when a foreground service exists");
+        Process.killProcess(Process.myPid());
+
         if (mHIDDeviceManager != null) {
             HIDDeviceManager.release(mHIDDeviceManager);
             mHIDDeviceManager = null;
