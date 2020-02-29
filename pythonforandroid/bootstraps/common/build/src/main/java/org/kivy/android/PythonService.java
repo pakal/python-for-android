@@ -43,7 +43,15 @@ public class PythonService extends Service implements Runnable {
     public static PythonService mService = null;
     private Intent startIntent = null;
 
+    // Stop the service when its activity is stopped
+    private boolean autoStopService = true;
+
+    // Restart the service when it gets stopped
     private boolean autoRestartService = false;
+
+    public void setAutoStopService(boolean stop) {
+        autoStopService = stop;
+    }
 
     public void setAutoRestartService(boolean restart) {
         autoRestartService = restart;
@@ -152,13 +160,16 @@ public class PythonService extends Service implements Runnable {
     }
 
     /**
-     * Stops the task gracefully when killed.
+     * Potentially stop the service when main task is stopped.
      * Calling stopSelf() will trigger a onDestroy() call from the system.
      */
     @Override
     public void onTaskRemoved(Intent rootIntent) {
         super.onTaskRemoved(rootIntent);
-        stopSelf();
+        if (autoStopService) {
+            Log.v("python service", "service stopping due to activity termination");
+            stopSelf();
+        }
     }
 
     @Override
